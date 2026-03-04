@@ -3,12 +3,13 @@ import os
 
 app = Flask(__name__) #initializing the app
 
-VERSION = os.getenv("APP_VERSION", "Version 1 - Blue") #get env varible
+#VERSION = os.getenv("APP_VERSION", "Version 1 - Blue") #get env varible
+color = os.getenv("COLOR", "UNKNOWN") #get env varible
 #print(VERSION)
 
 @app.route("/")
 def home():
-    return f"Hello! {VERSION}"
+    return f"{color} deployment"
 
 @app.route("/health")
 def health():
