@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "checking green container health..."
 STATUS=$(docker inspect --format='{{.State.Health.Status}}' green)
 
@@ -63,7 +65,7 @@ echo "Green is healthy at 50%. Increasing to 100%..."
 
 
 #at 100%v green
-ln -sf upstream_green.conf nginx/upstream.conf
+ln -sf upstream_10.conf nginx/upstream.conf
 docker exec nginx nginx -s reload
 
 echo "Monitoring deployment..."
