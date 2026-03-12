@@ -73,17 +73,16 @@ echo "Starting progressive rollout."
 for s in "${STAGES[@]}"; do
 
         if [ "$TARGET" == "green" ]; then
-                BLUE=$((10 - s))
-                GREEN=$s
-        else
-                BLUE=$s
-                GREEN=$((10 - s))
+        	CONF="upstream_${s}.conf"	
+	else
+        	CONF="upstream_b${s}.conf"	
         fi
 
-        echo "Traffic stage: blue=$BLUE; green=$GREEN"
+        echo "Traffic stage: using $CONF"
 
-        generate_upstream $BLUE $GREEN
-        reload_nginx
+	ln -sf "$CONF" "$UPSTREAM"
+        
+	reload_nginx
         sleep 10
         check_health
 
