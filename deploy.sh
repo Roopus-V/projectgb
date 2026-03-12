@@ -13,22 +13,22 @@ generate_upstream(){
         GREEN=$2
 
         if [ "$BLUE" -eq 0 ]; then
-			ln -sf upstream_green.conf $UPSTREAM
+			ln -sf upstream_green.conf "$UPSTREAM"
         elif [ "$GREEN" -eq 0 ]; then
-			ln -sf upstream_blue.conf $UPSTREAM
+			ln -sf upstream_blue.conf "$UPSTREAM"
         elif [ "$GREEN" -eq 1 ]; then
-			ln -sf upstream_1.conf $UPSTREAM
+			ln -sf upstream_1.conf "$UPSTREAM"
         elif [ "$GREEN" -eq 3 ]; then
-			ln -sf upstream_3.conf $UPSTREAM
+			ln -sf upstream_3.conf "$UPSTREAM"
         elif [ "$GREEN" -eq 5 ]; then
-			ln -sf upstream_5.conf $UPSTREAM
+			ln -sf upstream_5.conf "$UPSTREAM"
 	fi
 }
 
 #function to reload
 reload_nginx(){
-        docker exec $NGINX_CONTAINER nginx -t
-        docker exec $NGINX_CONTAINER nginx -s reload
+        docker exec "$NGINX_CONTAINER" nginx -t
+        docker exec "$NGINX_CONTAINER" nginx -s reload
 }
 #function to check health of container
 
