@@ -1,5 +1,14 @@
-from flask import Flask
+from prometheus_client import Counter, generate_latest
+from flask import Response, Flask
 import os
+
+#Defining counting metrics
+REQUEST_COUNT = Counter(
+    "app_requests_total",
+    "Total App Requests",
+    ["container"]
+)
+
 
 app = Flask(__name__) #initializing the app
 
@@ -9,7 +18,12 @@ color = os.getenv("COLOR", "UNKNOWN") #get env varible
 
 @app.route("/")
 def home():
+    REQUEST_COUNT.labels(container=color).inc()
     return f"{color} deployment"
+
+@app.route("/metrics")
+def metrics():
+    return Response(generate_latest(), mimetype="text/plain")
 
 @app.route("/health")
 def health():

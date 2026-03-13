@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "blue"
+    static_configs:
+      - targets: ["blue:5000"]
+
+  - job_name: "green"
+    static_configs:
+      - targets: ["green:5000"]
