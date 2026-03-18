@@ -28,3 +28,8 @@ minikube service nginx-deployment
 * Understand rolling updates
 * Migrate green/blue deployment to Kubernetes
 
+## Kubernetes (In Progress)
+
+Currently migrating deployment system to Kubernetes.
+
+See /k8s folder for details.
