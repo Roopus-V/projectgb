@@ -4,7 +4,7 @@ metadata:
   name: app-service
 spec:
   selector:
-    app: blue-deployment
+    app: green-deployment
   ports:
     - protocol: TCP
       port: 80
