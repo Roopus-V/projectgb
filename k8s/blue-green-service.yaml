@@ -4,7 +4,8 @@ metadata:
   name: app-service
 spec:
   selector:
-    app: green-deployment
+    app: nginx
+    version: blue
   ports:
     - protocol: TCP
       port: 80
