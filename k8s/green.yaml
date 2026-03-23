@@ -1,0 +1,26 @@
+#define applications (versions) “What to run” (app, version, replicas)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: green-deployment
+  name: green-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      version: green
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx
+        version: green
+    spec:
+      containers:
+      - image: nginx:1.21
+        name: nginx
+        resources: {}
+status: {}
